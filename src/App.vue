@@ -28,7 +28,7 @@
         <v-list-item-group
           v-model="group"
           active-class="primary--text ">
-          <v-list-item v-for="item in adminNavItems" :key="item.title">
+          <v-list-item v-for="item in adminNavItems" :key="item.title" :to="item.to">
             <v-list-item-icon>
               <v-icon left>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -40,7 +40,9 @@
       </v-list>
     </v-navigation-drawer>
     <v-main>
-      <router-view :key="$route.fullPath"/>
+      <div class="px-10">
+        <router-view :key="$route.fullPath"/>
+      </div>
     </v-main>
   </v-app>
 </template>
@@ -67,7 +69,7 @@ export default Vue.extend({
       },
       {
         title: 'Usuarios',
-        to: '/',
+        to: '/usuarios',
         icon: 'mdi-account'
       },
       {
